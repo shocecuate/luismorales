@@ -1,1005 +1,1425 @@
 /*==============================================================*/
-/* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     21/04/2016 15:51:27                          */
+/* DBMS name:      Sybase SQL Anywhere 11                       */
+/* Created on:     23/05/2016 5:12:50 p. m.                     */
 /*==============================================================*/
 
 
-alter table ALMACENAMIENTO
-   drop constraint FK_ALMACENA_REFERENCE_TIPOALMA;
-
-alter table AREAS
-   drop constraint FK_AREAS_REFERENCE_AREAS;
-
-alter table AREAS
-   drop constraint FK_AREAS_REFERENCE_NIVEL_AL;
-
-alter table AREAS
-   drop constraint FK_AREAS_REFERENCE_EMPLEADO;
-
-alter table CLINICA
-   drop constraint FK_CLINICA_REFERENCE_TIPODEAT;
-
-alter table CONTROLESPORRECURSOS
-   drop constraint FK_CONTROLE_REFERENCE_CONTROLE;
-
-alter table CONTROLESPORRECURSOS
-   drop constraint FK_CONTROLE_REFERENCE_UTENCILI;
-
-alter table CONTROLESPORRECURSOS
-   drop constraint FK_CONTROLE_REFERENCE_ENTREGA;
-
-alter table DATOSEXPEDIENTE
-   drop constraint FK_DATOSEXP_REFERENCE_EXPEDIEN;
-
-alter table DATOSEXPEDIENTE
-   drop constraint FK_DATOSEXP_REFERENCE_TIPODEAT;
-
-alter table DIRECCION
-   drop constraint FK_DIRECCIO_REFERENCE_PERSONA;
-
-alter table DIRECCION
-   drop constraint FK_DIRECCIO_REFERENCE_UBICACIO;
-
-alter table DOCUMENTOPERSONA
-   drop constraint FK_DOCUMENT_REFERENCE_TIPODEDO;
-
-alter table DOCUMENTOPERSONA
-   drop constraint FK_DOCUMENT_REFERENCE_PERSONA;
-
-alter table EDIFICIOS
-   drop constraint FK_EDIFICIO_REFERENCE_NIVEL_AL;
-
-alter table EMPLEADO
-   drop constraint FK_EMPLEADO_REFERENCE_DEPENDEN;
-
-alter table EMPLEADO
-   drop constraint FK_EMPLEADO_REFERENCE_CARGO;
-
-alter table EMPLEADO
-   drop constraint FK_EMPLEADO_REFERENCE_PERSONA;
-
-alter table EMPLEADO
-   drop constraint FK_EMPLEADO_REFERENCE_TIPOEMPL;
-
-alter table ENTREGA
-   drop constraint FK_ENTREGA_REFERENCE_PAQUETES;
-
-alter table ENVASEXPAQUETE
-   drop constraint FK_ENVASEXP_REFERENCE_ENVASES;
-
-alter table ENVASEXPAQUETE
-   drop constraint FK_ENVASEXP_REFERENCE_PAQUETES;
-
-alter table EXAMENES
-   drop constraint FK_EXAMENES_REFERENCE_DATOSEXP;
-
-alter table EXAMENES
-   drop constraint FK_EXAMENES_REFERENCE_TIPOEXAM;
-
-alter table EXPEDIENTE
-   drop constraint FK_EXPEDIEN_REFERENCE_ENFERMED;
-
-alter table EXPEDIENTE
-   drop constraint FK_EXPEDIEN_REFERENCE_CLINICA;
-
-alter table FACTURA
-   drop constraint FK_FACTURA_REFERENCE_PACIENTE;
-
-alter table LIMPIEZA
-   drop constraint FK_LIMPIEZA_REFERENCE_AREAS;
-
-alter table LIMPIEZA
-   drop constraint FK_LIMPIEZA_REFERENCE_TIPOLIMP;
-
-alter table LIMPIEZA
-   drop constraint FK_LIMPIEZA_REFERENCE_EMPLEADO;
-
-alter table MATENIMIENTO
-   drop constraint FK_MATENIMI_REFERENCE_UTENCILI;
-
-alter table MATENIMIENTO
-   drop constraint FK_MATENIMI_REFERENCE_EMPLEADO;
-
-alter table PACIENTE
-   drop constraint FK_PACIENTE_REFERENCE_PERSONA;
-
-alter table PACIENTE
-   drop constraint FK_PACIENTE_REFERENCE_EXPEDIEN;
-
-alter table PACIENTE
-   drop constraint FK_PACIENTE_REFERENCE_HOSPITAL;
-
-alter table PAQUETES
-   drop constraint FK_PAQUETES_REFERENCE_RIEGOS;
-
-alter table PAQUETES
-   drop constraint FK_PAQUETES_REFERENCE_RIESGOS;
-
-alter table PAQUETES
-   drop constraint FK_PAQUETES_REFERENCE_ALMACENA;
-
-alter table PAQUETES
-   drop constraint FK_PAQUETES_REFERENCE_TRANSPOR;
-
-alter table RECETA
-   drop constraint FK_RECETA_REFERENCE_DATOSEXP;
-
-alter table RECURSOSPORAREA
-   drop constraint FK_RECURSOS_REFERENCE_UTENCILI;
-
-alter table RECURSOSPORAREA
-   drop constraint FK_RECURSOS_REFERENCE_AREAS;
-
-alter table RIEGOS
-   drop constraint FK_RIEGOS_REFERENCE_TIPORIES;
-
-alter table RIESGOS
-   drop constraint FK_RIESGOS_REFERENCE_TIPORIES;
-
-alter table SEDE
-   drop constraint FK_SEDE_REFERENCE_HOSPITAL;
-
-alter table SEDE
-   drop constraint FK_SEDE_REFERENCE_EDIFICIO;
-
-alter table TELEFONOPORPERSONA
-   drop constraint FK_TELEFONO_REFERENCE_TELEFONO;
-
-alter table TELEFONOPORPERSONA
-   drop constraint FK_TELEFONO_REFERENCE_PERSONA;
-
-alter table TRANSPORTE
-   drop constraint FK_TRANSPOR_REFERENCE_TIPOTRAN;
-
-alter table UBICACIONGEO
-   drop constraint FK_UBICACIO_REFERENCE_PAIS;
-
-alter table UBICACIONGEO
-   drop constraint FK_UBICACIO_REFERENCE_DEPARTAM;
-
-alter table UBICACIONGEO
-   drop constraint FK_UBICACIO_REFERENCE_MUNICIPI;
-
-alter table UTENCILIOSXPAQUETE
-   drop constraint FK_UTENCILI_REFERENCE_PAQUETES;
-
-alter table UTENCILIOSXPAQUETE
-   drop constraint FK_UTENCILI_REFERENCE_UTENCILI;
-
-drop table ALMACENAMIENTO cascade constraints;
-
-drop table AREAS cascade constraints;
-
-drop table CARGO cascade constraints;
-
-drop table CLINICA cascade constraints;
-
-drop table CONTROLES cascade constraints;
-
-drop table CONTROLESPORRECURSOS cascade constraints;
-
-drop table DATOSEXPEDIENTE cascade constraints;
-
-drop table DEPARTAMENTO cascade constraints;
-
-drop table DEPENDENCIA cascade constraints;
-
-drop table DIRECCION cascade constraints;
-
-drop table DOCUMENTOPERSONA cascade constraints;
-
-drop table EDIFICIOS cascade constraints;
-
-drop table EMPLEADO cascade constraints;
-
-drop table ENFERMEDAD cascade constraints;
-
-drop table ENTREGA cascade constraints;
-
-drop table ENVASES cascade constraints;
-
-drop table ENVASEXPAQUETE cascade constraints;
-
-drop table EXAMENES cascade constraints;
-
-drop table EXPEDIENTE cascade constraints;
-
-drop table FACTURA cascade constraints;
-
-drop table HOSPITAL cascade constraints;
-
-drop table LIMPIEZA cascade constraints;
-
-drop table MATENIMIENTO cascade constraints;
-
-drop table MUNICIPIO cascade constraints;
-
-drop table NIVEL_ALA cascade constraints;
-
-drop table PACIENTE cascade constraints;
-
-drop table PAIS cascade constraints;
-
-drop table PAQUETES cascade constraints;
-
-drop table PERSONA cascade constraints;
-
-drop table RECETA cascade constraints;
-
-drop table RECURSOSPORAREA cascade constraints;
-
-drop table RIEGOS cascade constraints;
-
-drop table RIESGOS cascade constraints;
-
-drop table SEDE cascade constraints;
-
-drop table TELEFONO cascade constraints;
-
-drop table TELEFONOPORPERSONA cascade constraints;
-
-drop table TIPOALMACENAMIENTO cascade constraints;
-
-drop table TIPODEATENCION cascade constraints;
-
-drop table TIPODEDOCUMENTO cascade constraints;
-
-drop table TIPOEMPLEADO cascade constraints;
-
-drop table TIPOEXAMEN cascade constraints;
-
-drop table TIPOLIMPIEZA cascade constraints;
-
-drop table TIPORIESGO cascade constraints;
-
-drop table TIPORIESGOS cascade constraints;
-
-drop table TIPOTRANSPORTE cascade constraints;
-
-drop table TRANSPORTE cascade constraints;
-
-drop table UBICACIONGEO cascade constraints;
-
-drop table UTENCILIOS cascade constraints;
-
-drop table UTENCILIOSXPAQUETE cascade constraints;
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_ALM_REFERENCE_HPTL_TIP') then
+    alter table HPTL_ALMACENAMIENTO
+       delete foreign key FK_HPTL_ALM_REFERENCE_HPTL_TIP
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_DOC_PK_HTPL_CIT_FK') then
+    alter table HPTL.HPTL_CITAS
+       delete foreign key HPTL_DOC_PK_HTPL_CIT_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_CIT_REFERENCE_HPTL_CLI') then
+    alter table HPTL.HPTL_CITAS
+       delete foreign key FK_HPTL_CIT_REFERENCE_HPTL_CLI
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_DIR_PK_HPTL_CLI_FK') then
+    alter table HPTL.HPTL_CLINICAS
+       delete foreign key HPTL_DIR_PK_HPTL_CLI_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_CON_REFERENCE_HPTL_CON') then
+    alter table HPTL_CONTROLESPORRECURSOS
+       delete foreign key FK_HPTL_CON_REFERENCE_HPTL_CON
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_CON_REFERENCE_HPTL_UTE') then
+    alter table HPTL_CONTROLESPORRECURSOS
+       delete foreign key FK_HPTL_CON_REFERENCE_HPTL_UTE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_CON_REFERENCE_HPTL_ENT') then
+    alter table HPTL_CONTROLESPORRECURSOS
+       delete foreign key FK_HPTL_CON_REFERENCE_HPTL_ENT
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HTPTL_PAISES_FK_DEP') then
+    alter table HPTL.HPTL_DEPARTAMENTOS
+       delete foreign key HTPTL_PAISES_FK_DEP
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HTPL_MUN_FK_DIRECCIONES') then
+    alter table HPTL.HPTL_DIRECCIONES
+       delete foreign key HTPL_MUN_FK_DIRECCIONES
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_EMPLEADOS_PK_HPTL_DOC_FK') then
+    alter table HPTL.HPTL_DOCTORES
+       delete foreign key HPTL_EMPLEADOS_PK_HPTL_DOC_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_DOC_PK_DOC_ESP_DOC_FK') then
+    alter table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC
+       delete foreign key HPTL_DOC_PK_DOC_ESP_DOC_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_ESP_DOC_PK_HTPL_DOC_FK') then
+    alter table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC
+       delete foreign key HPTL_ESP_DOC_PK_HTPL_DOC_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_PERSONAS_PK_HPTL_EMP_PK') then
+    alter table HPTL.HPTL_EMPLEADOS
+       delete foreign key HPTL_PERSONAS_PK_HPTL_EMP_PK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_PUE_PK_HPTL_EMP_PUE_FK') then
+    alter table HPTL.HPTL_EMPLEADOS_PUESTOS
+       delete foreign key HPTL_PUE_PK_HPTL_EMP_PUE_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_ENF_PK_HPTL_TIP_ENF_FK') then
+    alter table HPTL.HPTL_ENFERMEDADES
+       delete foreign key HPTL_ENF_PK_HPTL_TIP_ENF_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_ENT_REFERENCE_HPTL_PAQ') then
+    alter table HPTL_ENTREGA
+       delete foreign key FK_HPTL_ENT_REFERENCE_HPTL_PAQ
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_ENV_REFERENCE_HPTL_ENV') then
+    alter table HPTL_ENVASEXPAQUETE
+       delete foreign key FK_HPTL_ENV_REFERENCE_HPTL_ENV
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_ENV_REFERENCE_HPTL_PAQ') then
+    alter table HPTL_ENVASEXPAQUETE
+       delete foreign key FK_HPTL_ENV_REFERENCE_HPTL_PAQ
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_EQ_PK_HPTL_TIP_ENF_FK') then
+    alter table HPTL.HPTL_EQUIPOS
+       delete foreign key HPTL_EQ_PK_HPTL_TIP_ENF_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_EX_HPTL_TIPOS_ENF_FK') then
+    alter table HPTL.HPTL_EXAMENES
+       delete foreign key HPTL_EX_HPTL_TIPOS_ENF_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_LIM_REFERENCE_HPTL_ARE') then
+    alter table HPTL_LIMPIEZA
+       delete foreign key FK_HPTL_LIM_REFERENCE_HPTL_ARE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_LIM_REFERENCE_HPTL_TIP') then
+    alter table HPTL_LIMPIEZA
+       delete foreign key FK_HPTL_LIM_REFERENCE_HPTL_TIP
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_LIM_REFERENCE_HPTL_PUE') then
+    alter table HPTL_LIMPIEZA
+       delete foreign key FK_HPTL_LIM_REFERENCE_HPTL_PUE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_MAT_REFERENCE_HPTL_UTE') then
+    alter table HPTL_MATENIMIENTO
+       delete foreign key FK_HPTL_MAT_REFERENCE_HPTL_UTE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_MAT_REFERENCE_HPTL_PUE') then
+    alter table HPTL_MATENIMIENTO
+       delete foreign key FK_HPTL_MAT_REFERENCE_HPTL_PUE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_DEPARTAMENTOS_FK_MUN') then
+    alter table HPTL.HPTL_MUNICIPIOS
+       delete foreign key HPTL_DEPARTAMENTOS_FK_MUN
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_PAQ_REFERENCE_HPTL_RIE') then
+    alter table HPTL_PAQUETES
+       delete foreign key FK_HPTL_PAQ_REFERENCE_HPTL_RIE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_PAQ_REFERENCE_HPTL_ALM') then
+    alter table HPTL_PAQUETES
+       delete foreign key FK_HPTL_PAQ_REFERENCE_HPTL_ALM
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_PAQ_REFERENCE_HPTL_TRA') then
+    alter table HPTL_PAQUETES
+       delete foreign key FK_HPTL_PAQ_REFERENCE_HPTL_TRA
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_PER_PK_HPTL_PER_TEL_FK') then
+    alter table HPTL.HPTL_PERSONAS_TELEFONOS
+       delete foreign key HPTL_PER_PK_HPTL_PER_TEL_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_TEL_PK_HPTL_PER_TEL_FK') then
+    alter table HPTL.HPTL_PERSONAS_TELEFONOS
+       delete foreign key HPTL_TEL_PK_HPTL_PER_TEL_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_PER_PK_HPTL_PER_DOC_FK') then
+    alter table HPTL.HPTL_PERSONA_DOCTO
+       delete foreign key HPTL_PER_PK_HPTL_PER_DOC_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_TIP_PK_HPTL_PER_DOC_FK') then
+    alter table HPTL.HPTL_PERSONA_DOCTO
+       delete foreign key HPTL_TIP_PK_HPTL_PER_DOC_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_AREAS_PK_HPTL_PUE_ARE_FK') then
+    alter table HPTL.HPTL_PUESTOS_AREAS
+       delete foreign key HPTL_AREAS_PK_HPTL_PUE_ARE_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='HPTL_PUE_PK_HPTL_PUE_ARE_FK') then
+    alter table HPTL.HPTL_PUESTOS_AREAS
+       delete foreign key HPTL_PUE_PK_HPTL_PUE_ARE_FK
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_REC_REFERENCE_HPTL_UTE') then
+    alter table HPTL_RECURSOXAREA
+       delete foreign key FK_HPTL_REC_REFERENCE_HPTL_UTE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_REC_REFERENCE_HPTL_ARE') then
+    alter table HPTL_RECURSOXAREA
+       delete foreign key FK_HPTL_REC_REFERENCE_HPTL_ARE
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_RIE_REFERENCE_HPTL_TIP') then
+    alter table HPTL_RIESGOS
+       delete foreign key FK_HPTL_RIE_REFERENCE_HPTL_TIP
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_TRA_REFERENCE_HPTL_TIP') then
+    alter table HPTL_TRANSPORTE
+       delete foreign key FK_HPTL_TRA_REFERENCE_HPTL_TIP
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_UTE_REFERENCE_HPTL_PAQ') then
+    alter table HPTL_UTENCILIOSXPAQUETE
+       delete foreign key FK_HPTL_UTE_REFERENCE_HPTL_PAQ
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_HPTL_UTE_REFERENCE_HPTL_UTE') then
+    alter table HPTL_UTENCILIOSXPAQUETE
+       delete foreign key FK_HPTL_UTE_REFERENCE_HPTL_UTE
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ALMACENAMIENTO'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_ALMACENAMIENTO
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_AREAS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_AREAS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_CITAS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_CITAS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_CLINICAS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_CLINICAS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_CONTROLES'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_CONTROLES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_CONTROLESPORRECURSOS'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_CONTROLESPORRECURSOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_DEPARTAMENTOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_DEPARTAMENTOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_DIRECCIONES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_DIRECCIONES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_DOCTORES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_DOCTORES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_DOCTORES_ESPECIALIDAD_DOC'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_EMPLEADOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_EMPLEADOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_EMPLEADOS_PUESTOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_EMPLEADOS_PUESTOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ENFERMEDADES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_ENFERMEDADES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ENTREGA'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_ENTREGA
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ENVASES'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_ENVASES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ENVASEXPAQUETE'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_ENVASEXPAQUETE
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_EQUIPOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_EQUIPOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_ESPECIALIDADES_DOCTORES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_ESPECIALIDADES_DOCTORES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_EXAMENES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_EXAMENES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_HORARIOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_HORARIOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_LIMPIEZA'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_LIMPIEZA
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_MATENIMIENTO'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_MATENIMIENTO
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_MEDICAMENTOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_MEDICAMENTOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_MUNICIPIOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_MUNICIPIOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PAISES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PAISES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PAQUETES'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_PAQUETES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PERSONAS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PERSONAS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PERSONAS_TELEFONOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PERSONAS_TELEFONOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PERSONA_DOCTO'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PERSONA_DOCTO
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PUESTOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PUESTOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_PUESTOS_AREAS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_PUESTOS_AREAS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_RECURSOXAREA'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_RECURSOXAREA
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_RIESGOS'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_RIESGOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TELEFONOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TELEFONOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPOALMACENAMIENTO'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_TIPOALMACENAMIENTO
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPOLIMPIEZA'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_TIPOLIMPIEZA
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPORIESGOS'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_TIPORIESGOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPOS_EQUIPOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TIPOS_EQUIPOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPOS_EXAMENES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TIPOS_EXAMENES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPOTRANSPORTE'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_TIPOTRANSPORTE
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPO_DOCUMENTOS'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TIPO_DOCUMENTOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPO_ENFERMEDADES'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TIPO_ENFERMEDADES
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TIPO_SANGRE'
+     and table_type in ('BASE', 'GBL TEMP')
+     and creator=user_id('HPTL')
+) then
+    drop table HPTL.HPTL_TIPO_SANGRE
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_TRANSPORTE'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_TRANSPORTE
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_UTENCILIOS'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_UTENCILIOS
+end if;
+
+if exists(
+   select 1 from sys.systable 
+   where table_name='HPTL_UTENCILIOSXPAQUETE'
+     and table_type in ('BASE', 'GBL TEMP')
+) then
+    drop table HPTL_UTENCILIOSXPAQUETE
+end if;
+
+revoke connect from HPTL;
 
 /*==============================================================*/
-/* Table: ALMACENAMIENTO                                        */
+/* User: HPTL                                                   */
 /*==============================================================*/
-create table ALMACENAMIENTO 
+grant connect to HPTL identified by "";
+
+/*==============================================================*/
+/* Table: HPTL_ALMACENAMIENTO                                   */
+/*==============================================================*/
+create table HPTL_ALMACENAMIENTO 
 (
-   IDALMACENAMIENTO     INT                  not null,
-   IDTIPOALMACENAMIENTO INT,
-   constraint PK_ALMACENAMIENTO primary key (IDALMACENAMIENTO)
+   IDALMACENAMIENTO     INT                            not null,
+   IDTIPOALMACENAMIENTO INT                            null,
+   constraint PK_HPTL_ALMACENAMIENTO primary key (IDALMACENAMIENTO)
 );
 
 /*==============================================================*/
-/* Table: AREAS                                                 */
+/* Table: HPTL_AREAS                                            */
 /*==============================================================*/
-create table AREAS 
+create table HPTL.HPTL_AREAS 
 (
-   IDAREA               INT                  not null,
-   ARE_IDAREA           INT,
-   IDNIVEL_ALA          INT,
-   IDEMPLEADO           INT,
-   NOMBREAREA           VARCHAR2(50),
-   SUBAREA              VARCHAR2(50),
-   constraint PK_AREAS primary key (IDAREA)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(10)                   null,
+   DESCRIPCION          VARCHAR2(256)                  null,
+   constraint HPTL_AREAS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: CARGO                                                 */
+/* Table: HPTL_CITAS                                            */
 /*==============================================================*/
-create table CARGO 
+create table HPTL.HPTL_CITAS 
 (
-   IDCARGO              INT                  not null,
-   NOMBRE               VARCHAR2(50),
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_CARGO primary key (IDCARGO)
+   ID                   INTEGER                        not null,
+   PACIENTES_ID         INTEGER                        not null,
+   CLILNICAS_ID         INTEGER                        not null,
+   DOCTORES_ID          INTEGER                        not null,
+   FECHA_CITA           DATE                           null,
+   HORA_CITA            TIME                           null,
+   constraint HPTL_CITAS_PK primary key (ID)
+)
+CREATE TABLE HPTL.HPTL_HIS_MEDICA_ENCA (
+		ID INTEGER NOT NULL,
+		PACIENTES_ID INTEGER NOT NULL,
+		CONSTRAINT HPTL_HIS_MEDICA_ENCA_PK PRIMARY KEY (ID),
+		CONSTRAINT HPTL_PAC_PK_HTPL_HIS_FK FOREIGN KEY (PACIENTES_ID) REFERENCES HPTL.HPTL_PACIENTES(ID)
+)
+
+CREATE TABLE HPTL.HPTL_HIS_MEDICA_DETA (
+		ID INTEGER NOT NULL,
+		HIS_ENC_ID INTEGER,
+		OBSERVACIONES VARCHAR(50),
+		ENFERMEDADES_ID INTEGER,
+		CITAS_ID INTEGER,
+		CONSTRAINT HPTL_HIS_MEDICA_DETA_PK PRIMARY KEY (ID),
+		CONSTRAINT HPTL_HIS_PK_HPTL_HIS_FK FOREIGN KEY (HIS_ENC_ID) REFERENCES HPTL.HPTL_HIS_MEDICA_ENCA(ID),
+		CONSTRAINT HPTL_ENF_PK_HPTL_HIS_FK FOREIGN KEY (ENFERMEDADES_ID) REFERENCES HPTL.HPTL_ENFERMEDADES(ID),
+		CONSTRAINT HPTL_CIT_PK_HPTL_HIS_FK FOREIGN KEY (CITAS_ID) REFERENCES HPTL.HPTL_CITAS(ID)
+)
+
+CREATE TABLE HPTL.HPTL_RECETAS (
+		ID INTEGER NOT NULL,
+		HIS_DET_ID INTEGER,
+		OBSERVACIONES VARCHAR(250),
+		CONSTRAINT HPTL_RECETAS_PK PRIMARY KEY (ID),
+		CONSTRAINT HPTL_HIS_PK_HPTL_REC_FK FOREIGN KEY (HIS_DET_ID) REFERENCES HPTL.HPTL_HIS_MEDICA_DETA(ID)
+)
+
+CREATE TABLE HPTL.HPTL_HIS_EXAMENES (
+		EXAMENES_ID INTEGER NOT NULL,
+		HIS_DET_ID INTEGER NOT NULL,
+		CONSTRAINT HPTL_HIS_EXAMENES_PK PRIMARY KEY (EXAMENES_ID,HIS_DET_ID),
+		CONSTRAINT HPTL_EXA_PK_HPTL_HIS_EXA_FK FOREIGN KEY (EXAMENES_ID) REFERENCES HPTL.HPTL_EXAMENES,
+		CONSTRAINT HPTL_HIS_PK_HPTL_HIS_EXA_FK FOREIGN KEY (HIS_DET_ID) REFERENCES HPTL.HPTL_HIS_MEDICA_DETA
 );
 
 /*==============================================================*/
-/* Table: CLINICA                                               */
+/* Table: HPTL_CLINICAS                                         */
 /*==============================================================*/
-create table CLINICA 
+create table HPTL.HPTL_CLINICAS 
 (
-   IDCLINICA            INT                  not null,
-   IDATENCION           INT,
-   constraint PK_CLINICA primary key (IDCLINICA)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(30)                   not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   DIRECCIONES_ID       INTEGER                        not null,
+   constraint HPTL_CLINICAS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: CONTROLES                                             */
+/* Table: HPTL_CONTROLES                                        */
 /*==============================================================*/
-create table CONTROLES 
+create table HPTL_CONTROLES 
 (
-   IDCONTROL            INT                  not null,
-   TIPOCONTROL          VARCHAR2(50),
-   constraint PK_CONTROLES primary key (IDCONTROL)
+   IDCONTROL            INT                            not null,
+   TIPOCONTROL          VARCHAR2(50)                   null,
+   constraint PK_HPTL_CONTROLES primary key (IDCONTROL)
 );
 
 /*==============================================================*/
-/* Table: CONTROLESPORRECURSOS                                  */
+/* Table: HPTL_CONTROLESPORRECURSOS                             */
 /*==============================================================*/
-create table CONTROLESPORRECURSOS 
+create table HPTL_CONTROLESPORRECURSOS 
 (
-   IDCONTROLXRECURSO    INT                  not null,
-   IDCONTROL            INT,
-   IDRECURSO            INT,
-   IDENTREGA            INT,
-   constraint PK_CONTROLESPORRECURSOS primary key (IDCONTROLXRECURSO)
+   IDCONTROLXRECURSO    INT                            not null,
+   IDCONTROL            INT                            null,
+   IDRECURSO            INT                            null,
+   IDENTREGA            INT                            null,
+   constraint PK_HPTL_CONTROLESPORRECURSOS primary key (IDCONTROLXRECURSO)
 );
 
 /*==============================================================*/
-/* Table: DATOSEXPEDIENTE                                       */
+/* Table: HPTL_DEPARTAMENTOS                                    */
 /*==============================================================*/
-create table DATOSEXPEDIENTE 
+create table HPTL.HPTL_DEPARTAMENTOS 
 (
-   IDEXPEDIENTE         INT,
-   IDATENCION           INT,
-   IDDATOSEXPEDIENTE    INT                  not null,
-   constraint PK_DATOSEXPEDIENTE primary key (IDDATOSEXPEDIENTE)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(15)                   not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   PAIS_ID              INTEGER                        not null,
+   constraint HPTL_DEPARTAMENTOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: DEPARTAMENTO                                          */
+/* Table: HPTL_DIRECCIONES                                      */
 /*==============================================================*/
-create table DEPARTAMENTO 
+create table HPTL.HPTL_DIRECCIONES 
 (
-   IDEPARTAMENTO        INT                  not null,
-   DEPARTAMENTO         VARCHAR2(50),
-   constraint PK_DEPARTAMENTO primary key (IDEPARTAMENTO)
+   ID                   INTEGER                        not null,
+   NUMERO_CASA          VARCHAR2(10)                   null,
+   COLONIA              VARCHAR2(50)                   null,
+   CALLE_AVENIDA        VARCHAR2(50)                   null,
+   MUNICIPIO_ID         INTEGER                        not null,
+   constraint HPTL_DIRECCIONES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: DEPENDENCIA                                           */
+/* Table: HPTL_DOCTORES                                         */
 /*==============================================================*/
-create table DEPENDENCIA 
+create table HPTL.HPTL_DOCTORES 
 (
-   IDDEPENDENCIA        INT                  not null,
-   NOMBRE               VARCHAR2(50),
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_DEPENDENCIA primary key (IDDEPENDENCIA)
+   ID                   INTEGER                        not null,
+   COLEGIADO            VARCHAR2(20)                   not null,
+   EMPLEADOS_ID         INTEGER                        not null,
+   constraint HPTL_DOCTORES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: DIRECCION                                             */
+/* Table: HPTL_DOCTORES_ESPECIALIDAD_DOC                        */
 /*==============================================================*/
-create table DIRECCION 
+create table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC 
 (
-   ID_DIRECCION         NUMBER               not null,
-   IDPERSONA            INT,
-   IDUBICACIONGEO       INT,
-   constraint PK_DIRECCION primary key (ID_DIRECCION)
+   ID                   INTEGER                        not null,
+   DOCTORES_ID          INTEGER                        not null,
+   ESPECIALIDADES_DOCTORES INTEGER                        not null,
+   constraint HPTL_DOCTORES_ESP_DOC_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: DOCUMENTOPERSONA                                      */
+/* Table: HPTL_EMPLEADOS                                        */
 /*==============================================================*/
-create table DOCUMENTOPERSONA 
+create table HPTL.HPTL_EMPLEADOS 
 (
-   IDTIPODOCTO          INT                  not null,
-   IDPERSONA            INT                  not null,
-   NODOCTO              VARCHAR2(50),
-   constraint PK_DOCUMENTOPERSONA primary key (IDTIPODOCTO, IDPERSONA)
+   ID                   INTEGER                        not null,
+   CODIGO_EMPLEADO      VARCHAR2(20)                   null,
+   FECHA_INICIO_LABORES DATE                           null,
+   PERSONAS_ID          INTEGER                        not null,
+   constraint HPTL_EMPLEADOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: EDIFICIOS                                             */
+/* Table: HPTL_EMPLEADOS_PUESTOS                                */
 /*==============================================================*/
-create table EDIFICIOS 
+create table HPTL.HPTL_EMPLEADOS_PUESTOS 
 (
-   IDEDIFICIO           INT                  not null,
-   IDNIVEL_ALA          INT,
-   constraint PK_EDIFICIOS primary key (IDEDIFICIO)
+   ID                   INTEGER                        not null,
+   EMPLEADOS_ID         INTEGER                        not null,
+   PUESTOS_ID           INTEGER                        not null,
+   constraint HPTL_EMPLEADOS_PUESTOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: EMPLEADO                                              */
+/* Table: HPTL_ENFERMEDADES                                     */
 /*==============================================================*/
-create table EMPLEADO 
+create table HPTL.HPTL_ENFERMEDADES 
 (
-   IDEMPLEADO           INT                  not null,
-   IDPERSONA            INT,
-   IDTIPOEMPLEADO       INT,
-   IDDEPENDENCIA        INT,
-   IDCARGO              INT,
-   constraint PK_EMPLEADO primary key (IDEMPLEADO)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(20)                   not null,
+   TIPOS_ENFERMEDADES_ID INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint HPTL_ENFERMEDADES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: ENFERMEDAD                                            */
+/* Table: HPTL_ENTREGA                                          */
 /*==============================================================*/
-create table ENFERMEDAD 
+create table HPTL_ENTREGA 
 (
-   IDENFERMEDAD         INT                  not null,
-   DESCRIPCION          VARCHAR2(100),
-   constraint PK_ENFERMEDAD primary key (IDENFERMEDAD)
+   IDENTREGA            INT                            not null,
+   IDPAQUETE            INT                            null,
+   FECHADEESTERILAZION  DATE                           null,
+   FECHADECADUCIDAD     DATE                           null,
+   HORADENTREGA         DATE                           null,
+   constraint PK_HPTL_ENTREGA primary key (IDENTREGA)
 );
 
 /*==============================================================*/
-/* Table: ENTREGA                                               */
+/* Table: HPTL_ENVASES                                          */
 /*==============================================================*/
-create table ENTREGA 
+create table HPTL_ENVASES 
 (
-   IDENTREGA            INT                  not null,
-   IDPAQUETE            INT,
-   FECHADEESTERILAZION  DATE,
-   FECHADECADUCIDAD     DATE,
-   HORADENTREGA         DATE,
-   constraint PK_ENTREGA primary key (IDENTREGA)
+   IDENVASE             INT                            not null,
+   TIPOEVASE            VARCHAR2(50)                   null,
+   constraint PK_HPTL_ENVASES primary key (IDENVASE)
 );
 
 /*==============================================================*/
-/* Table: ENVASES                                               */
+/* Table: HPTL_ENVASEXPAQUETE                                   */
 /*==============================================================*/
-create table ENVASES 
+create table HPTL_ENVASEXPAQUETE 
 (
-   IDENVASE             INT                  not null,
-   TIPOEVASE            VARCHAR2(50),
-   constraint PK_ENVASES primary key (IDENVASE)
+   ENVASEXPAQUETE       INT                            not null,
+   IDPAQUETE            INT                            null,
+   IDENVASE             INT                            null,
+   constraint PK_HPTL_ENVASEXPAQUETE primary key (ENVASEXPAQUETE)
 );
 
 /*==============================================================*/
-/* Table: ENVASEXPAQUETE                                        */
+/* Table: HPTL_EQUIPOS                                          */
 /*==============================================================*/
-create table ENVASEXPAQUETE 
+create table HPTL.HPTL_EQUIPOS 
 (
-   ENVASEXPAQUETE       INT                  not null,
-   IDPAQUETE            INT,
-   IDENVASE             INT,
-   constraint PK_ENVASEXPAQUETE primary key (ENVASEXPAQUETE)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(30)                   not null,
+   TIPO_EQUIPOS_ID      INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(30)                   null,
+   constraint HPTL_EQUIPOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: EXAMENES                                              */
+/* Table: HPTL_ESPECIALIDADES_DOCTORES                          */
 /*==============================================================*/
-create table EXAMENES 
+create table HPTL.HPTL_ESPECIALIDADES_DOCTORES 
 (
-   IDEXAMEN             INT                  not null,
-   IDDATOSEXPEDIENTE    INT,
-   IDTIPOEXAMEN         INT,
-   constraint PK_EXAMENES primary key (IDEXAMEN)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(10)                   null,
+   DESCRIPCION          VARCHAR2(256)                  null,
+   constraint HPTL_ESPECIALIDADES_DOC_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: EXPEDIENTE                                            */
+/* Table: HPTL_EXAMENES                                         */
 /*==============================================================*/
-create table EXPEDIENTE 
+create table HPTL.HPTL_EXAMENES 
 (
-   IDEXPEDIENTE         INT                  not null,
-   IDCLINICA            INT,
-   IDENFERMEDAD         INT,
-   constraint PK_EXPEDIENTE primary key (IDEXPEDIENTE)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(30)                   not null,
+   TIPOS_EXAMENES_ID    INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(30)                   null,
+   constraint HPTL_EXAMENES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: FACTURA                                               */
+/* Table: HPTL_HORARIOS                                         */
 /*==============================================================*/
-create table FACTURA 
+create table HPTL.HPTL_HORARIOS 
 (
-   IDFACTURA            INT                  not null,
-   IDPACIENTE           INT,
-   FECHADEGENERACION    VARCHAR2(50),
-   constraint PK_FACTURA primary key (IDFACTURA)
+   ID                   INTEGER                        not null,
+   HORA_INICIO          DATE                           not null,
+   HORA_FIN             DATE                           not null,
+   constraint HPTL_HORARIOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: HOSPITAL                                              */
+/* Table: HPTL_LIMPIEZA                                         */
 /*==============================================================*/
-create table HOSPITAL 
+create table HPTL_LIMPIEZA 
 (
-   IDHOSPITAL           INT                  not null,
-   NOMBRE               VARCHAR2(50),
-   constraint PK_HOSPITAL primary key (IDHOSPITAL)
+   IDLIMPIEZA           INT                            not null,
+   IDAREA               INT                            null,
+   IDTIPOLIMPIEZA       INT                            null,
+   ID                   INTEGER                        null,
+   HPT_ID               INTEGER                        null,
+   IDEMPLEADO           INT                            null,
+   constraint PK_HPTL_LIMPIEZA primary key (IDLIMPIEZA)
 );
 
 /*==============================================================*/
-/* Table: LIMPIEZA                                              */
+/* Table: HPTL_MATENIMIENTO                                     */
 /*==============================================================*/
-create table LIMPIEZA 
+create table HPTL_MATENIMIENTO 
 (
-   IDLIMPIEZA           INT                  not null,
-   IDAREA               INT,
-   IDTIPOLIMPIEZA       INT,
-   IDEMPLEADO           INT,
-   constraint PK_LIMPIEZA primary key (IDLIMPIEZA)
+   IDMANTENIMIENTO      INT                            not null,
+   ID                   INTEGER                        null,
+   IDRECURSO            INT                            null,
+   IDEMPLEADO           INT                            null,
+   COMTROLBIOLOGICO     VARCHAR2(50)                   null,
+   CONTROLQUIMICO       VARCHAR2(50)                   null,
+   constraint PK_HPTL_MATENIMIENTO primary key (IDMANTENIMIENTO)
 );
 
 /*==============================================================*/
-/* Table: MATENIMIENTO                                          */
+/* Table: HPTL_MEDICAMENTOS                                     */
 /*==============================================================*/
-create table MATENIMIENTO 
+create table HPTL.HPTL_MEDICAMENTOS 
 (
-   IDMANTENIMIENTO      INT                  not null,
-   IDRECURSO            INT,
-   IDEMPLEADO           INT,
-   COMTROLBIOLOGICO     VARCHAR2(50),
-   CONTROLQUIMICO       VARCHAR2(50),
-   constraint PK_MATENIMIENTO primary key (IDMANTENIMIENTO)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(30)                   not null,
+   DESCRIPCION          VARCHAR2(30)                   null,
+   constraint HPTL_MEDICAMENTOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: MUNICIPIO                                             */
+/* Table: HPTL_MUNICIPIOS                                       */
 /*==============================================================*/
-create table MUNICIPIO 
+create table HPTL.HPTL_MUNICIPIOS 
 (
-   IDMUNICIPIO          INT                  not null,
-   MUNICIPIO            VARCHAR2(50),
-   constraint PK_MUNICIPIO primary key (IDMUNICIPIO)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(15)                   not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   DEPARTAMENTO_ID      INTEGER                        not null,
+   constraint HPTL_MUNICIPIOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: NIVEL_ALA                                             */
+/* Table: HPTL_PAISES                                           */
 /*==============================================================*/
-create table NIVEL_ALA 
+create table HPTL.HPTL_PAISES 
 (
-   IDNIVEL_ALA          INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_NIVEL_ALA primary key (IDNIVEL_ALA)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(15)                   not null,
+   DESCRIPCION          VARCHAR2(30)                   null,
+   constraint HPTL_PAISES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: PACIENTE                                              */
+/* Table: HPTL_PAQUETES                                         */
 /*==============================================================*/
-create table PACIENTE 
+create table HPTL_PAQUETES 
 (
-   IDPACIENTE           INT                  not null,
-   IDPERSONA            INT,
-   IDEXPEDIENTE         INT,
-   IDHOSPITAL           INT,
-   constraint PK_PACIENTE primary key (IDPACIENTE)
+   IDPAQUETE            INT                            not null,
+   IDCONSERVACION       INT                            null,
+   IDALMACENAMIENTO     INT                            null,
+   IDTRANSPORTE         INT                            null,
+   constraint PK_HPTL_PAQUETES primary key (IDPAQUETE)
 );
 
 /*==============================================================*/
-/* Table: PAIS                                                  */
+/* Table: HPTL_PERSONAS                                         */
 /*==============================================================*/
-create table PAIS 
+create table HPTL.HPTL_PERSONAS 
 (
-   IDPAIS               INT                  not null,
-   PAIS                 VARCHAR2(50),
-   constraint PK_PAIS primary key (IDPAIS)
+   ID                   INTEGER                        not null,
+   PRIMER_NOMBRE        VARCHAR2(60)                   not null,
+   SEGUNDO_NOMBRE       VARCHAR2(60)                   null,
+   TERCER_NOMBRE        VARCHAR2(60)                   null,
+   PRIMER_APELLIDO      VARCHAR2(60)                   not null,
+   SEGUNDO_APELLIDO     VARCHAR2(60)                   null,
+   APELLIDO_CASADA      VARCHAR2(60)                   null,
+   FECHA_NACIMIENTO     DATE                           null,
+   SEXO                 CHAR(1)                        null,
+   constraint HPTL_PERSONAS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: PAQUETES                                              */
+/* Table: HPTL_PERSONAS_TELEFONOS                               */
 /*==============================================================*/
-create table PAQUETES 
+create table HPTL.HPTL_PERSONAS_TELEFONOS 
 (
-   IDPAQUETE            INT                  not null,
-   IDRIESGO             INT,
-   IDCONSERVACION       INT,
-   IDALMACENAMIENTO     INT,
-   IDTRANSPORTE         INT,
-   constraint PK_PAQUETES primary key (IDPAQUETE)
+   ID                   INTEGER                        not null,
+   PERSONAS_ID          INTEGER                        not null,
+   TELEFONOS_ID         INTEGER                        not null,
+   constraint HPTL_PERSONAS_TELEFONOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: PERSONA                                               */
+/* Table: HPTL_PERSONA_DOCTO                                    */
 /*==============================================================*/
-create table PERSONA 
+create table HPTL.HPTL_PERSONA_DOCTO 
 (
-   IDPERSONA            INT                  not null,
-   NOMBRES              VARCHAR2(20),
-   APELLIDOS            VARCHAR2(20),
-   GENERO               VARCHAR2(2),
-   constraint PK_PERSONA primary key (IDPERSONA)
+   ID                   INTEGER                        not null,
+   PERSONAS_ID          INTEGER                        not null,
+   TIPO_DOC_ID          INTEGER                        not null,
+   constraint HPTL_PERSONAS_DOCTO_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: RECETA                                                */
+/* Table: HPTL_PUESTOS                                          */
 /*==============================================================*/
-create table RECETA 
+create table HPTL.HPTL_PUESTOS 
 (
-   IDDATOSEXPEDIENTE    INT
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(10)                   not null,
+   DESCRIPCION          VARCHAR2(256)                  null,
+   constraint HPTL_PUESTOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: RECURSOSPORAREA                                       */
+/* Table: HPTL_PUESTOS_AREAS                                    */
 /*==============================================================*/
-create table RECURSOSPORAREA 
+create table HPTL.HPTL_PUESTOS_AREAS 
 (
-   IDRECURSO            INT,
-   IDAREA               INT
+   ID                   INTEGER                        not null,
+   PUESTOS_ID           INTEGER                        not null,
+   AREAS_ID             INTEGER                        not null,
+   constraint HPTL_PUESTOS_AREAS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: RIEGOS                                                */
+/* Table: HPTL_RECURSOXAREA                                     */
 /*==============================================================*/
-create table RIEGOS 
+create table HPTL_RECURSOXAREA 
 (
-   IDRIESGO             INT                  not null,
-   IDTIPORIESGO         INT,
-   constraint PK_RIEGOS primary key (IDRIESGO)
+   IDRECURSO            INT                            null,
+   ID                   INTEGER                        null,
+   IDAREA               INT                            null
 );
 
 /*==============================================================*/
-/* Table: RIESGOS                                               */
+/* Table: HPTL_RIESGOS                                          */
 /*==============================================================*/
-create table RIESGOS 
+create table HPTL_RIESGOS 
 (
-   IDRIESGOS            INT                  not null,
-   IDTIPORIESGOS        INT,
-   constraint PK_RIESGOS primary key (IDRIESGOS)
+   IDRIESGOS            INT                            not null,
+   IDTIPORIESGOS        INT                            null,
+   constraint PK_HPTL_RIESGOS primary key (IDRIESGOS)
 );
 
 /*==============================================================*/
-/* Table: SEDE                                                  */
+/* Table: HPTL_TELEFONOS                                        */
 /*==============================================================*/
-create table SEDE 
+create table HPTL.HPTL_TELEFONOS 
 (
-   IDSEDE               INT                  not null,
-   IDHOSPITAL           INT,
-   IDEDIFICIO           INT,
-   constraint PK_SEDE primary key (IDSEDE)
+   ID                   INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(60)                   null,
+   TELEFONO             INTEGER                        null,
+   constraint HPTL_TELEFONOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: TELEFONO                                              */
+/* Table: HPTL_TIPOALMACENAMIENTO                               */
 /*==============================================================*/
-create table TELEFONO 
+create table HPTL_TIPOALMACENAMIENTO 
 (
-   IDTELEFONO           INT                  not null,
-   TIPODETEL            VARCHAR2(20),
-   constraint PK_TELEFONO primary key (IDTELEFONO)
+   IDTIPOALMACENAMIENTO INT                            not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint PK_HPTL_TIPOALMACENAMIENTO primary key (IDTIPOALMACENAMIENTO)
 );
 
 /*==============================================================*/
-/* Table: TELEFONOPORPERSONA                                    */
+/* Table: HPTL_TIPOLIMPIEZA                                     */
 /*==============================================================*/
-create table TELEFONOPORPERSONA 
+create table HPTL_TIPOLIMPIEZA 
 (
-   IDPERSONA            INT,
-   IDTELEFONO           INT
+   IDTIPOLIMPIEZA       INT                            not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint PK_HPTL_TIPOLIMPIEZA primary key (IDTIPOLIMPIEZA)
 );
 
 /*==============================================================*/
-/* Table: TIPOALMACENAMIENTO                                    */
+/* Table: HPTL_TIPORIESGOS                                      */
 /*==============================================================*/
-create table TIPOALMACENAMIENTO 
+create table HPTL_TIPORIESGOS 
 (
-   IDTIPOALMACENAMIENTO INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_TIPOALMACENAMIENTO primary key (IDTIPOALMACENAMIENTO)
+   IDTIPORIESGOS        INT                            not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint PK_HPTL_TIPORIESGOS primary key (IDTIPORIESGOS)
 );
 
 /*==============================================================*/
-/* Table: TIPODEATENCION                                        */
+/* Table: HPTL_TIPOS_EQUIPOS                                    */
 /*==============================================================*/
-create table TIPODEATENCION 
+create table HPTL.HPTL_TIPOS_EQUIPOS 
 (
-   IDATENCION           INT                  not null,
-   DESCRIPCION          VARCHAR2(100),
-   constraint PK_TIPODEATENCION primary key (IDATENCION)
+   ID                   INTEGER                        not null,
+   EQUIPOS_ID           INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint HPTL_TIPOS_EQUIPOS_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: TIPODEDOCUMENTO                                       */
+/* Table: HPTL_TIPOS_EXAMENES                                   */
 /*==============================================================*/
-create table TIPODEDOCUMENTO 
+create table HPTL.HPTL_TIPOS_EXAMENES 
 (
-   IDTIPODOCTO          INT                  not null,
-   TIPODOCTO            VARCHAR2(50),
-   constraint PK_TIPODEDOCUMENTO primary key (IDTIPODOCTO)
+   ID                   INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint HPTL_TIPOS_ENFERMEDADES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: TIPOEMPLEADO                                          */
+/* Table: HPTL_TIPOTRANSPORTE                                   */
 /*==============================================================*/
-create table TIPOEMPLEADO 
+create table HPTL_TIPOTRANSPORTE 
 (
-   IDTIPOEMPLEADO       INT                  not null,
-   DESCRIPCION          VARCHAR2(100),
-   constraint PK_TIPOEMPLEADO primary key (IDTIPOEMPLEADO)
+   IDTIPOTRANSPORTE     INT                            not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint PK_HPTL_TIPOTRANSPORTE primary key (IDTIPOTRANSPORTE)
 );
 
 /*==============================================================*/
-/* Table: TIPOEXAMEN                                            */
+/* Table: HPTL_TIPO_DOCUMENTOS                                  */
 /*==============================================================*/
-create table TIPOEXAMEN 
+create table HPTL.HPTL_TIPO_DOCUMENTOS 
 (
-   IDTIPOEXAMEN         INT                  not null,
-   DESCTIPOEXAMEN       VARCHAR2(100),
-   constraint PK_TIPOEXAMEN primary key (IDTIPOEXAMEN)
+   ID                   INTEGER                        not null,
+   CODIGO               VARCHAR2(15)                   not null,
+   DESCRIPCION          VARCHAR2(30)                   null,
+   constraint HPTL_DOCUMENTO_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: TIPOLIMPIEZA                                          */
+/* Table: HPTL_TIPO_ENFERMEDADES                                */
 /*==============================================================*/
-create table TIPOLIMPIEZA 
+create table HPTL.HPTL_TIPO_ENFERMEDADES 
 (
-   IDTIPOLIMPIEZA       INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_TIPOLIMPIEZA primary key (IDTIPOLIMPIEZA)
+   ID                   INTEGER                        not null,
+   CODIGO               INTEGER                        not null,
+   DESCRIPCION          VARCHAR2(50)                   null,
+   constraint HTPTL_TIPO_ENFERMEDADES_PK primary key (ID)
 );
 
 /*==============================================================*/
-/* Table: TIPORIESGO                                            */
+/* Table: HPTL_TIPO_SANGRE                                      */
 /*==============================================================*/
-create table TIPORIESGO 
+create table HPTL.HPTL_TIPO_SANGRE 
 (
-   IDTIPORIESGO         INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_TIPORIESGO primary key (IDTIPORIESGO)
+   ID                   INTEGER                        not null,
+   TIPOSANGRE           VARCHAR(20)                    null,
+   constraint HPTL_TIPO_SANGRE_PK primary key (ID)
+)
+CREATE TABLE HPTL.HPTL_PACIENTES(
+        ID INTEGER NOT NULL,
+        CODIGO_PACIENTE INTEGER NOT NULL,
+        FECHA_REGISTO_PACIENTE DATE,
+        PERSONAS_ID INTEGER NOT NULL,
+		TIPOSANGRE_ID INTEGER,
+        CONSTRAINT HPTL_PACIENTES_PK PRIMARY KEY(ID),
+        CONSTRAINT HPTL_PERSONA_PK_HPTL_PAC_FK FOREIGN KEY(PERSONAS_ID) REFERENCES HPTL.HPTL_PERSONAS(ID),
+		CONSTRAINT HPTL_TIPO_SANGRE_PK_HPTL_PAC_FK FOREIGN KEY (TIPOSANGRE_ID) REFERENCES HPTL.HPTL_TIPO_SANGRE(ID)
 );
 
 /*==============================================================*/
-/* Table: TIPORIESGOS                                           */
+/* Table: HPTL_TRANSPORTE                                       */
 /*==============================================================*/
-create table TIPORIESGOS 
+create table HPTL_TRANSPORTE 
 (
-   IDTIPORIESGOS        INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_TIPORIESGOS primary key (IDTIPORIESGOS)
+   IDTRANSPORTE         INT                            not null,
+   IDTIPOTRANSPORTE     INT                            null,
+   constraint PK_HPTL_TRANSPORTE primary key (IDTRANSPORTE)
 );
 
 /*==============================================================*/
-/* Table: TIPOTRANSPORTE                                        */
+/* Table: HPTL_UTENCILIOS                                       */
 /*==============================================================*/
-create table TIPOTRANSPORTE 
+create table HPTL_UTENCILIOS 
 (
-   IDTIPOTRANSPORTE     INT                  not null,
-   DESCRIPCION          VARCHAR2(50),
-   constraint PK_TIPOTRANSPORTE primary key (IDTIPOTRANSPORTE)
+   IDRECURSO            INT                            not null,
+   TIPOMATERIAL         VARCHAR2(50)                   null,
+   constraint PK_HPTL_UTENCILIOS primary key (IDRECURSO)
 );
 
 /*==============================================================*/
-/* Table: TRANSPORTE                                            */
+/* Table: HPTL_UTENCILIOSXPAQUETE                               */
 /*==============================================================*/
-create table TRANSPORTE 
+create table HPTL_UTENCILIOSXPAQUETE 
 (
-   IDTRANSPORTE         INT                  not null,
-   IDTIPOTRANSPORTE     INT,
-   constraint PK_TRANSPORTE primary key (IDTRANSPORTE)
+   IDUTENCILIOSXPAQUETE INT                            not null,
+   IDPAQUETE            INT                            null,
+   IDRECURSO            INT                            null,
+   constraint PK_HPTL_UTENCILIOSXPAQUETE primary key (IDUTENCILIOSXPAQUETE)
 );
 
-/*==============================================================*/
-/* Table: UBICACIONGEO                                          */
-/*==============================================================*/
-create table UBICACIONGEO 
-(
-   IDUBICACIONGEO       INT                  not null,
-   IDPAIS               INT,
-   IDEPARTAMENTO        INT,
-   IDMUNICIPIO          INT,
-   constraint PK_UBICACIONGEO primary key (IDUBICACIONGEO)
-);
+alter table HPTL_ALMACENAMIENTO
+   add constraint FK_HPTL_ALM_REFERENCE_HPTL_TIP foreign key (IDTIPOALMACENAMIENTO)
+      references HPTL_TIPOALMACENAMIENTO (IDTIPOALMACENAMIENTO)
+      on update restrict
+      on delete restrict;
 
-/*==============================================================*/
-/* Table: UTENCILIOS                                            */
-/*==============================================================*/
-create table UTENCILIOS 
-(
-   IDRECURSO            INT                  not null,
-   TIPOMATERIAL         VARCHAR2(50),
-   constraint PK_UTENCILIOS primary key (IDRECURSO)
-);
+alter table HPTL.HPTL_CITAS
+   add constraint HPTL_DOC_PK_HTPL_CIT_FK foreign key (DOCTORES_ID)
+      references HPTL.HPTL_DOCTORES (ID)
+      on update restrict
+      on delete restrict;
 
-/*==============================================================*/
-/* Table: UTENCILIOSXPAQUETE                                    */
-/*==============================================================*/
-create table UTENCILIOSXPAQUETE 
-(
-   IDUTENCILIOSXPAQUETE INT                  not null,
-   IDPAQUETE            INT,
-   IDRECURSO            INT,
-   constraint PK_UTENCILIOSXPAQUETE primary key (IDUTENCILIOSXPAQUETE)
-);
+alter table HPTL.HPTL_CITAS
+   add constraint FK_HPTL_CIT_REFERENCE_HPTL_CLI foreign key (ID)
+      references HPTL.HPTL_CLINICAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table ALMACENAMIENTO
-   add constraint FK_ALMACENA_REFERENCE_TIPOALMA foreign key (IDTIPOALMACENAMIENTO)
-      references TIPOALMACENAMIENTO (IDTIPOALMACENAMIENTO);
+alter table HPTL.HPTL_CLINICAS
+   add constraint HPTL_DIR_PK_HPTL_CLI_FK foreign key (DIRECCIONES_ID)
+      references HPTL.HPTL_DIRECCIONES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table AREAS
-   add constraint FK_AREAS_REFERENCE_AREAS foreign key (ARE_IDAREA)
-      references AREAS (IDAREA);
+alter table HPTL_CONTROLESPORRECURSOS
+   add constraint FK_HPTL_CON_REFERENCE_HPTL_CON foreign key (IDCONTROL)
+      references HPTL_CONTROLES (IDCONTROL)
+      on update restrict
+      on delete restrict;
 
-alter table AREAS
-   add constraint FK_AREAS_REFERENCE_NIVEL_AL foreign key (IDNIVEL_ALA)
-      references NIVEL_ALA (IDNIVEL_ALA);
+alter table HPTL_CONTROLESPORRECURSOS
+   add constraint FK_HPTL_CON_REFERENCE_HPTL_UTE foreign key (IDRECURSO)
+      references HPTL_UTENCILIOS (IDRECURSO)
+      on update restrict
+      on delete restrict;
 
-alter table AREAS
-   add constraint FK_AREAS_REFERENCE_EMPLEADO foreign key (IDEMPLEADO)
-      references EMPLEADO (IDEMPLEADO);
+alter table HPTL_CONTROLESPORRECURSOS
+   add constraint FK_HPTL_CON_REFERENCE_HPTL_ENT foreign key (IDENTREGA)
+      references HPTL_ENTREGA (IDENTREGA)
+      on update restrict
+      on delete restrict;
 
-alter table CLINICA
-   add constraint FK_CLINICA_REFERENCE_TIPODEAT foreign key (IDATENCION)
-      references TIPODEATENCION (IDATENCION);
+alter table HPTL.HPTL_DEPARTAMENTOS
+   add constraint HTPTL_PAISES_FK_DEP foreign key (PAIS_ID)
+      references HPTL.HPTL_PAISES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table CONTROLESPORRECURSOS
-   add constraint FK_CONTROLE_REFERENCE_CONTROLE foreign key (IDCONTROL)
-      references CONTROLES (IDCONTROL);
+alter table HPTL.HPTL_DIRECCIONES
+   add constraint HTPL_MUN_FK_DIRECCIONES foreign key (MUNICIPIO_ID)
+      references HPTL.HPTL_MUNICIPIOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table CONTROLESPORRECURSOS
-   add constraint FK_CONTROLE_REFERENCE_UTENCILI foreign key (IDRECURSO)
-      references UTENCILIOS (IDRECURSO);
+alter table HPTL.HPTL_DOCTORES
+   add constraint HPTL_EMPLEADOS_PK_HPTL_DOC_FK foreign key (EMPLEADOS_ID)
+      references HPTL.HPTL_PERSONAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table CONTROLESPORRECURSOS
-   add constraint FK_CONTROLE_REFERENCE_ENTREGA foreign key (IDENTREGA)
-      references ENTREGA (IDENTREGA);
+alter table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC
+   add constraint HPTL_DOC_PK_DOC_ESP_DOC_FK foreign key (DOCTORES_ID)
+      references HPTL.HPTL_DOCTORES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table DATOSEXPEDIENTE
-   add constraint FK_DATOSEXP_REFERENCE_EXPEDIEN foreign key (IDEXPEDIENTE)
-      references EXPEDIENTE (IDEXPEDIENTE);
+alter table HPTL.HPTL_DOCTORES_ESPECIALIDAD_DOC
+   add constraint HPTL_ESP_DOC_PK_HTPL_DOC_FK foreign key (ESPECIALIDADES_DOCTORES)
+      references HPTL.HPTL_ESPECIALIDADES_DOCTORES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table DATOSEXPEDIENTE
-   add constraint FK_DATOSEXP_REFERENCE_TIPODEAT foreign key (IDATENCION)
-      references TIPODEATENCION (IDATENCION);
+alter table HPTL.HPTL_EMPLEADOS
+   add constraint HPTL_PERSONAS_PK_HPTL_EMP_PK foreign key (PERSONAS_ID)
+      references HPTL.HPTL_PERSONAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table DIRECCION
-   add constraint FK_DIRECCIO_REFERENCE_PERSONA foreign key (IDPERSONA)
-      references PERSONA (IDPERSONA);
+alter table HPTL.HPTL_EMPLEADOS_PUESTOS
+   add constraint HPTL_PUE_PK_HPTL_EMP_PUE_FK foreign key (PUESTOS_ID)
+      references HPTL.HPTL_PUESTOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table DIRECCION
-   add constraint FK_DIRECCIO_REFERENCE_UBICACIO foreign key (IDUBICACIONGEO)
-      references UBICACIONGEO (IDUBICACIONGEO);
+alter table HPTL.HPTL_ENFERMEDADES
+   add constraint HPTL_ENF_PK_HPTL_TIP_ENF_FK foreign key (TIPOS_ENFERMEDADES_ID)
+      references HPTL.HPTL_TIPO_ENFERMEDADES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table DOCUMENTOPERSONA
-   add constraint FK_DOCUMENT_REFERENCE_TIPODEDO foreign key (IDTIPODOCTO)
-      references TIPODEDOCUMENTO (IDTIPODOCTO);
+alter table HPTL_ENTREGA
+   add constraint FK_HPTL_ENT_REFERENCE_HPTL_PAQ foreign key (IDPAQUETE)
+      references HPTL_PAQUETES (IDPAQUETE)
+      on update restrict
+      on delete restrict;
 
-alter table DOCUMENTOPERSONA
-   add constraint FK_DOCUMENT_REFERENCE_PERSONA foreign key (IDPERSONA)
-      references PERSONA (IDPERSONA);
+alter table HPTL_ENVASEXPAQUETE
+   add constraint FK_HPTL_ENV_REFERENCE_HPTL_ENV foreign key (IDENVASE)
+      references HPTL_ENVASES (IDENVASE)
+      on update restrict
+      on delete restrict;
 
-alter table EDIFICIOS
-   add constraint FK_EDIFICIO_REFERENCE_NIVEL_AL foreign key (IDNIVEL_ALA)
-      references NIVEL_ALA (IDNIVEL_ALA);
+alter table HPTL_ENVASEXPAQUETE
+   add constraint FK_HPTL_ENV_REFERENCE_HPTL_PAQ foreign key (IDPAQUETE)
+      references HPTL_PAQUETES (IDPAQUETE)
+      on update restrict
+      on delete restrict;
 
-alter table EMPLEADO
-   add constraint FK_EMPLEADO_REFERENCE_DEPENDEN foreign key (IDDEPENDENCIA)
-      references DEPENDENCIA (IDDEPENDENCIA);
+alter table HPTL.HPTL_EQUIPOS
+   add constraint HPTL_EQ_PK_HPTL_TIP_ENF_FK foreign key (TIPO_EQUIPOS_ID)
+      references HPTL.HPTL_TIPOS_EQUIPOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table EMPLEADO
-   add constraint FK_EMPLEADO_REFERENCE_CARGO foreign key (IDCARGO)
-      references CARGO (IDCARGO);
+alter table HPTL.HPTL_EXAMENES
+   add constraint HPTL_EX_HPTL_TIPOS_ENF_FK foreign key (TIPOS_EXAMENES_ID)
+      references HPTL.HPTL_TIPOS_EXAMENES (ID)
+      on update restrict
+      on delete restrict;
 
-alter table EMPLEADO
-   add constraint FK_EMPLEADO_REFERENCE_PERSONA foreign key (IDPERSONA)
-      references PERSONA (IDPERSONA);
+alter table HPTL_LIMPIEZA
+   add constraint FK_HPTL_LIM_REFERENCE_HPTL_ARE foreign key (ID)
+      references HPTL.HPTL_AREAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table EMPLEADO
-   add constraint FK_EMPLEADO_REFERENCE_TIPOEMPL foreign key (IDTIPOEMPLEADO)
-      references TIPOEMPLEADO (IDTIPOEMPLEADO);
+alter table HPTL_LIMPIEZA
+   add constraint FK_HPTL_LIM_REFERENCE_HPTL_TIP foreign key (IDTIPOLIMPIEZA)
+      references HPTL_TIPOLIMPIEZA (IDTIPOLIMPIEZA)
+      on update restrict
+      on delete restrict;
 
-alter table ENTREGA
-   add constraint FK_ENTREGA_REFERENCE_PAQUETES foreign key (IDPAQUETE)
-      references PAQUETES (IDPAQUETE);
+alter table HPTL_LIMPIEZA
+   add constraint FK_HPTL_LIM_REFERENCE_HPTL_PUE foreign key (HPT_ID)
+      references HPTL.HPTL_PUESTOS_AREAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table ENVASEXPAQUETE
-   add constraint FK_ENVASEXP_REFERENCE_ENVASES foreign key (IDENVASE)
-      references ENVASES (IDENVASE);
+alter table HPTL_MATENIMIENTO
+   add constraint FK_HPTL_MAT_REFERENCE_HPTL_UTE foreign key (IDRECURSO)
+      references HPTL_UTENCILIOS (IDRECURSO)
+      on update restrict
+      on delete restrict;
 
-alter table ENVASEXPAQUETE
-   add constraint FK_ENVASEXP_REFERENCE_PAQUETES foreign key (IDPAQUETE)
-      references PAQUETES (IDPAQUETE);
+alter table HPTL_MATENIMIENTO
+   add constraint FK_HPTL_MAT_REFERENCE_HPTL_PUE foreign key (ID)
+      references HPTL.HPTL_PUESTOS_AREAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table EXAMENES
-   add constraint FK_EXAMENES_REFERENCE_DATOSEXP foreign key (IDDATOSEXPEDIENTE)
-      references DATOSEXPEDIENTE (IDDATOSEXPEDIENTE);
+alter table HPTL.HPTL_MUNICIPIOS
+   add constraint HPTL_DEPARTAMENTOS_FK_MUN foreign key (DEPARTAMENTO_ID)
+      references HPTL.HPTL_DEPARTAMENTOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table EXAMENES
-   add constraint FK_EXAMENES_REFERENCE_TIPOEXAM foreign key (IDTIPOEXAMEN)
-      references TIPOEXAMEN (IDTIPOEXAMEN);
+alter table HPTL_PAQUETES
+   add constraint FK_HPTL_PAQ_REFERENCE_HPTL_RIE foreign key (IDCONSERVACION)
+      references HPTL_RIESGOS (IDRIESGOS)
+      on update restrict
+      on delete restrict;
 
-alter table EXPEDIENTE
-   add constraint FK_EXPEDIEN_REFERENCE_ENFERMED foreign key (IDENFERMEDAD)
-      references ENFERMEDAD (IDENFERMEDAD);
+alter table HPTL_PAQUETES
+   add constraint FK_HPTL_PAQ_REFERENCE_HPTL_ALM foreign key (IDALMACENAMIENTO)
+      references HPTL_ALMACENAMIENTO (IDALMACENAMIENTO)
+      on update restrict
+      on delete restrict;
 
-alter table EXPEDIENTE
-   add constraint FK_EXPEDIEN_REFERENCE_CLINICA foreign key (IDCLINICA)
-      references CLINICA (IDCLINICA);
+alter table HPTL_PAQUETES
+   add constraint FK_HPTL_PAQ_REFERENCE_HPTL_TRA foreign key (IDTRANSPORTE)
+      references HPTL_TRANSPORTE (IDTRANSPORTE)
+      on update restrict
+      on delete restrict;
 
-alter table FACTURA
-   add constraint FK_FACTURA_REFERENCE_PACIENTE foreign key (IDPACIENTE)
-      references PACIENTE (IDPACIENTE);
+alter table HPTL.HPTL_PERSONAS_TELEFONOS
+   add constraint HPTL_PER_PK_HPTL_PER_TEL_FK foreign key (PERSONAS_ID)
+      references HPTL.HPTL_PERSONAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table LIMPIEZA
-   add constraint FK_LIMPIEZA_REFERENCE_AREAS foreign key (IDAREA)
-      references AREAS (IDAREA);
+alter table HPTL.HPTL_PERSONAS_TELEFONOS
+   add constraint HPTL_TEL_PK_HPTL_PER_TEL_FK foreign key (TELEFONOS_ID)
+      references HPTL.HPTL_TELEFONOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table LIMPIEZA
-   add constraint FK_LIMPIEZA_REFERENCE_TIPOLIMP foreign key (IDTIPOLIMPIEZA)
-      references TIPOLIMPIEZA (IDTIPOLIMPIEZA);
+alter table HPTL.HPTL_PERSONA_DOCTO
+   add constraint HPTL_PER_PK_HPTL_PER_DOC_FK foreign key (PERSONAS_ID)
+      references HPTL.HPTL_PERSONAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table LIMPIEZA
-   add constraint FK_LIMPIEZA_REFERENCE_EMPLEADO foreign key (IDEMPLEADO)
-      references EMPLEADO (IDEMPLEADO);
+alter table HPTL.HPTL_PERSONA_DOCTO
+   add constraint HPTL_TIP_PK_HPTL_PER_DOC_FK foreign key (TIPO_DOC_ID)
+      references HPTL.HPTL_TIPO_DOCUMENTOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table MATENIMIENTO
-   add constraint FK_MATENIMI_REFERENCE_UTENCILI foreign key (IDRECURSO)
-      references UTENCILIOS (IDRECURSO);
+alter table HPTL.HPTL_PUESTOS_AREAS
+   add constraint HPTL_AREAS_PK_HPTL_PUE_ARE_FK foreign key (AREAS_ID)
+      references HPTL.HPTL_AREAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table MATENIMIENTO
-   add constraint FK_MATENIMI_REFERENCE_EMPLEADO foreign key (IDEMPLEADO)
-      references EMPLEADO (IDEMPLEADO);
+alter table HPTL.HPTL_PUESTOS_AREAS
+   add constraint HPTL_PUE_PK_HPTL_PUE_ARE_FK foreign key (PUESTOS_ID)
+      references HPTL.HPTL_PUESTOS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table PACIENTE
-   add constraint FK_PACIENTE_REFERENCE_PERSONA foreign key (IDPERSONA)
-      references PERSONA (IDPERSONA);
+alter table HPTL_RECURSOXAREA
+   add constraint FK_HPTL_REC_REFERENCE_HPTL_UTE foreign key (IDRECURSO)
+      references HPTL_UTENCILIOS (IDRECURSO)
+      on update restrict
+      on delete restrict;
 
-alter table PACIENTE
-   add constraint FK_PACIENTE_REFERENCE_EXPEDIEN foreign key (IDEXPEDIENTE)
-      references EXPEDIENTE (IDEXPEDIENTE);
+alter table HPTL_RECURSOXAREA
+   add constraint FK_HPTL_REC_REFERENCE_HPTL_ARE foreign key (ID)
+      references HPTL.HPTL_AREAS (ID)
+      on update restrict
+      on delete restrict;
 
-alter table PACIENTE
-   add constraint FK_PACIENTE_REFERENCE_HOSPITAL foreign key (IDHOSPITAL)
-      references HOSPITAL (IDHOSPITAL);
+alter table HPTL_RIESGOS
+   add constraint FK_HPTL_RIE_REFERENCE_HPTL_TIP foreign key (IDTIPORIESGOS)
+      references HPTL_TIPORIESGOS (IDTIPORIESGOS)
+      on update restrict
+      on delete restrict;
 
-alter table PAQUETES
-   add constraint FK_PAQUETES_REFERENCE_RIEGOS foreign key (IDRIESGO)
-      references RIEGOS (IDRIESGO);
+alter table HPTL_TRANSPORTE
+   add constraint FK_HPTL_TRA_REFERENCE_HPTL_TIP foreign key (IDTIPOTRANSPORTE)
+      references HPTL_TIPOTRANSPORTE (IDTIPOTRANSPORTE)
+      on update restrict
+      on delete restrict;
 
-alter table PAQUETES
-   add constraint FK_PAQUETES_REFERENCE_RIESGOS foreign key (IDCONSERVACION)
-      references RIESGOS (IDRIESGOS);
+alter table HPTL_UTENCILIOSXPAQUETE
+   add constraint FK_HPTL_UTE_REFERENCE_HPTL_PAQ foreign key (IDPAQUETE)
+      references HPTL_PAQUETES (IDPAQUETE)
+      on update restrict
+      on delete restrict;
 
-alter table PAQUETES
-   add constraint FK_PAQUETES_REFERENCE_ALMACENA foreign key (IDALMACENAMIENTO)
-      references ALMACENAMIENTO (IDALMACENAMIENTO);
-
-alter table PAQUETES
-   add constraint FK_PAQUETES_REFERENCE_TRANSPOR foreign key (IDTRANSPORTE)
-      references TRANSPORTE (IDTRANSPORTE);
-
-alter table RECETA
-   add constraint FK_RECETA_REFERENCE_DATOSEXP foreign key (IDDATOSEXPEDIENTE)
-      references DATOSEXPEDIENTE (IDDATOSEXPEDIENTE);
-
-alter table RECURSOSPORAREA
-   add constraint FK_RECURSOS_REFERENCE_UTENCILI foreign key (IDRECURSO)
-      references UTENCILIOS (IDRECURSO);
-
-alter table RECURSOSPORAREA
-   add constraint FK_RECURSOS_REFERENCE_AREAS foreign key (IDAREA)
-      references AREAS (IDAREA);
-
-alter table RIEGOS
-   add constraint FK_RIEGOS_REFERENCE_TIPORIES foreign key (IDTIPORIESGO)
-      references TIPORIESGO (IDTIPORIESGO);
-
-alter table RIESGOS
-   add constraint FK_RIESGOS_REFERENCE_TIPORIES foreign key (IDTIPORIESGOS)
-      references TIPORIESGOS (IDTIPORIESGOS);
-
-alter table SEDE
-   add constraint FK_SEDE_REFERENCE_HOSPITAL foreign key (IDHOSPITAL)
-      references HOSPITAL (IDHOSPITAL);
-
-alter table SEDE
-   add constraint FK_SEDE_REFERENCE_EDIFICIO foreign key (IDEDIFICIO)
-      references EDIFICIOS (IDEDIFICIO);
-
-alter table TELEFONOPORPERSONA
-   add constraint FK_TELEFONO_REFERENCE_TELEFONO foreign key (IDTELEFONO)
-      references TELEFONO (IDTELEFONO);
-
-alter table TELEFONOPORPERSONA
-   add constraint FK_TELEFONO_REFERENCE_PERSONA foreign key (IDPERSONA)
-      references PERSONA (IDPERSONA);
-
-alter table TRANSPORTE
-   add constraint FK_TRANSPOR_REFERENCE_TIPOTRAN foreign key (IDTIPOTRANSPORTE)
-      references TIPOTRANSPORTE (IDTIPOTRANSPORTE);
-
-alter table UBICACIONGEO
-   add constraint FK_UBICACIO_REFERENCE_PAIS foreign key (IDPAIS)
-      references PAIS (IDPAIS);
-
-alter table UBICACIONGEO
-   add constraint FK_UBICACIO_REFERENCE_DEPARTAM foreign key (IDEPARTAMENTO)
-      references DEPARTAMENTO (IDEPARTAMENTO);
-
-alter table UBICACIONGEO
-   add constraint FK_UBICACIO_REFERENCE_MUNICIPI foreign key (IDMUNICIPIO)
-      references MUNICIPIO (IDMUNICIPIO);
-
-alter table UTENCILIOSXPAQUETE
-   add constraint FK_UTENCILI_REFERENCE_PAQUETES foreign key (IDPAQUETE)
-      references PAQUETES (IDPAQUETE);
-
-alter table UTENCILIOSXPAQUETE
-   add constraint FK_UTENCILI_REFERENCE_UTENCILI foreign key (IDRECURSO)
-      references UTENCILIOS (IDRECURSO);
+alter table HPTL_UTENCILIOSXPAQUETE
+   add constraint FK_HPTL_UTE_REFERENCE_HPTL_UTE foreign key (IDRECURSO)
+      references HPTL_UTENCILIOS (IDRECURSO)
+      on update restrict
+      on delete restrict;
 
